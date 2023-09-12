@@ -15,7 +15,7 @@ export default function TaefikPage() {
     const [serversList, setServerList] = useState<ServerType[]>([]);
 
     const fetchServers = async () => {
-        const res = await axios.get(`${import.meta.env.VITE_SERVER_API}/api/1/servers`);
+        const res = await axios.get(`${import.meta.env.VITE_SERVER_API}/api/v1/servers`);
         const data = await res.data;
         setServerList(data);
     };
