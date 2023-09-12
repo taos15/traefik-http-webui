@@ -21,7 +21,6 @@ export default function TaefikPage() {
     };
 
     const handleSubmit = async (e: SyntheticEvent) => {
-        // e.preventDefault();
         const name = (e.target as any).SName.value as ServerType["name"];
         const host = (e.target as any).SAddress.value as ServerType["host"];
         const port = Number((e.target as any).SPort.value) === 0 ? 2375 : Number((e.target as any).SPort.value);
@@ -37,7 +36,7 @@ export default function TaefikPage() {
             await axios.delete(`${import.meta.env.VITE_SERVER_API}/api/1/servers/${serverId}`);
             setServerList((prevServers) => prevServers.filter((server) => server.id !== serverId));
         } catch (error) {
-            console.error(error);
+            console.error((error as Error).message);
         }
     };
 
