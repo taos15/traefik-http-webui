@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SyntheticEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 export default function TraefikServers() {
     const serverSchema = z.object({
