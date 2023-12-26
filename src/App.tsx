@@ -1,10 +1,11 @@
-import TaefikPage from "./TaefikPage";
+import NavTabs from "./components/navigation/NavTabs";
 
 function App() {
     return (
-        <div>
-            <TaefikPage />
-        </div>
+        <>
+            <NavTabs />
+            {/* <TaefikPage /> */}
+        </>
     );
 }
 

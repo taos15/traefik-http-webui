@@ -12,12 +12,12 @@ export default function TaefikPage() {
 
     type ServerType = z.infer<typeof serverSchema>;
 
-    const [serversList, setServerList] = useState<ServerType[]>([]);
+    const [serversList, setServersList] = useState<ServerType[]>([]);
 
     const fetchServers = async () => {
         const res = await axios.get(`${import.meta.env.VITE_SERVER_API}/api/v1/servers`);
         const data = await res.data;
-        setServerList(data);
+        setServersList(data);
     };
 
     const handleSubmit = async (e: SyntheticEvent) => {
@@ -34,7 +34,7 @@ export default function TaefikPage() {
     const handleDelete = async (serverId: ServerType["id"]) => {
         try {
             await axios.delete(`${import.meta.env.VITE_SERVER_API}/api/v1/servers/${serverId}`);
-            setServerList((prevServers) => prevServers.filter((server) => server.id !== serverId));
+            setServersList((prevServers) => prevServers.filter((server) => server.id !== serverId));
         } catch (error) {
             console.error((error as Error).message);
         }
