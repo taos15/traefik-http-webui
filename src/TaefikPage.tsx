@@ -27,13 +27,13 @@ export default function TaefikPage() {
         const newServer: ServerType = { name, host, port };
         console.log(newServer);
         axios
-            .post(`${import.meta.env.VITE_SERVER_API}/api/1/servers`, newServer)
+            .post(`${import.meta.env.VITE_SERVER_API}/api/v1/servers`, newServer)
             .then((res) => console.log(res))
             .catch((err) => console.error(err));
     };
     const handleDelete = async (serverId: ServerType["id"]) => {
         try {
-            await axios.delete(`${import.meta.env.VITE_SERVER_API}/api/1/servers/${serverId}`);
+            await axios.delete(`${import.meta.env.VITE_SERVER_API}/api/v1/servers/${serverId}`);
             setServerList((prevServers) => prevServers.filter((server) => server.id !== serverId));
         } catch (error) {
             console.error((error as Error).message);
