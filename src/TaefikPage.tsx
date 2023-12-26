@@ -15,29 +15,28 @@ export default function TaefikPage() {
     const [serversList, setServerList] = useState<ServerType[]>([]);
 
     const fetchServers = async () => {
-        const res = await axios.get(`${import.meta.env.VITE_SERVER_API}/api/1/servers`);
+        const res = await axios.get(`${import.meta.env.VITE_SERVER_API}/api/v1/servers`);
         const data = await res.data;
         setServerList(data);
     };
 
     const handleSubmit = async (e: SyntheticEvent) => {
-        // e.preventDefault();
         const name = (e.target as any).SName.value as ServerType["name"];
         const host = (e.target as any).SAddress.value as ServerType["host"];
         const port = Number((e.target as any).SPort.value) === 0 ? 2375 : Number((e.target as any).SPort.value);
         const newServer: ServerType = { name, host, port };
         console.log(newServer);
         axios
-            .post(`${import.meta.env.VITE_SERVER_API}/api/1/servers`, newServer)
+            .post(`${import.meta.env.VITE_SERVER_API}/api/v1/servers`, newServer)
             .then((res) => console.log(res))
             .catch((err) => console.error(err));
     };
     const handleDelete = async (serverId: ServerType["id"]) => {
         try {
-            await axios.delete(`${import.meta.env.VITE_SERVER_API}/api/1/servers/${serverId}`);
+            await axios.delete(`${import.meta.env.VITE_SERVER_API}/api/v1/servers/${serverId}`);
             setServerList((prevServers) => prevServers.filter((server) => server.id !== serverId));
         } catch (error) {
-            console.error(error);
+            console.error((error as Error).message);
         }
     };
 
