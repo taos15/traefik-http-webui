@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SyntheticEvent, useEffect, useState } from "react";
+import { SyntheticEvent } from "react";
 import { z } from "zod";
 export default function AddServers() {
     const serverSchema = z.object({

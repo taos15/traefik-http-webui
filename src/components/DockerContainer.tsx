@@ -5,9 +5,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
 import axios from "axios";
-import * as React from "react";
 
 export default function DockerContainer({
     containers,
@@ -31,17 +29,17 @@ export default function DockerContainer({
             })
             .catch((err) => console.error(err));
     };
-    const description: string =
-        containers?.Labels["org.label-schema.description"] ??
-        containers?.Labels["org.opencontainers.image.description"];
-    let cleanDescription = "";
-    const startMarkdown = description?.indexOf("[");
-    const endMarkdown = description?.indexOf(")");
-    console.log(startMarkdown, endMarkdown);
-
-    if (startMarkdown && endMarkdown) {
-        cleanDescription = description?.slice(0, startMarkdown) + description?.slice(endMarkdown + 3);
-    }
+    // uncommet to show container description
+    // const description: string =
+    //     containers?.Labels["org.label-schema.description"] ??
+    //     containers?.Labels["org.opencontainers.image.description"];
+    // let cleanDescription = "";
+    // const startMarkdown = description?.indexOf("[");
+    // const endMarkdown = description?.indexOf(")");
+    // console.log(startMarkdown, endMarkdown);
+    // if (startMarkdown && endMarkdown) {
+    //     cleanDescription = description?.slice(0, startMarkdown) + description?.slice(endMarkdown + 3);
+    // }
 
     return (
         <Card sx={{ maxWidth: 345, maxHeight: 345 }}>
